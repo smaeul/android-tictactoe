@@ -13,7 +13,7 @@ android {
         enabled true
     }
     defaultConfig {
-        applicationId "com.example.application"
+        applicationId "com.example.tictactoe"
         minSdkVersion 21
         targetSdkVersion 26
         versionCode 100
