@@ -3,6 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="controller"
+            type="com.example.tictactoe.GameController" />
+    </data>
+
     <!-- A ConstraintLayout provides powerful methods for arranging Views relative to other views or
     within empty space in their parent. It enforces a very shallow layout hierarchy. Note that any
     class that follows a few rules can be referenced from an XML layout, but if it is not in the
@@ -59,7 +66,8 @@
         <ImageView
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:src="@drawable/cross"
+            android:onClick="@{() -> controller.mark(0, 0)}"
+            android:src="@{controller.getPieceAt(0, 0)}"
             app:layout_constraintBottom_toTopOf="@+id/row_divider_1"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/column_divider_1"
@@ -70,7 +78,8 @@
         <ImageView
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:src="@drawable/nought"
+            android:onClick="@{() -> controller.mark(0, 1)}"
+            android:src="@{controller.getPieceAt(0, 1)}"
             app:layout_constraintBottom_toTopOf="@+id/row_divider_1"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/column_divider_2"
@@ -81,7 +90,8 @@
         <ImageView
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:src="@drawable/nought"
+            android:onClick="@{() -> controller.mark(0, 2)}"
+            android:src="@{controller.getPieceAt(0, 2)}"
             app:layout_constraintBottom_toTopOf="@+id/row_divider_1"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toEndOf="parent"
@@ -92,7 +102,8 @@
         <ImageView
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:src="@drawable/nought"
+            android:onClick="@{() -> controller.mark(1, 0)}"
+            android:src="@{controller.getPieceAt(1, 0)}"
             app:layout_constraintBottom_toTopOf="@+id/row_divider_2"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/column_divider_1"
@@ -103,7 +114,8 @@
         <ImageView
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:src="@drawable/cross"
+            android:onClick="@{() -> controller.mark(1, 1)}"
+            android:src="@{controller.getPieceAt(1, 1)}"
             app:layout_constraintBottom_toTopOf="@+id/row_divider_2"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/column_divider_2"
@@ -114,7 +126,8 @@
         <ImageView
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:src="@drawable/nought"
+            android:onClick="@{() -> controller.mark(1, 2)}"
+            android:src="@{controller.getPieceAt(1, 2)}"
             app:layout_constraintBottom_toTopOf="@+id/row_divider_2"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toEndOf="parent"
@@ -125,7 +138,8 @@
         <ImageView
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:src="@drawable/nought"
+            android:onClick="@{() -> controller.mark(2, 0)}"
+            android:src="@{controller.getPieceAt(2, 0)}"
             app:layout_constraintBottom_toTopOf="@+id/reset_button"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/column_divider_1"
@@ -136,7 +150,8 @@
         <ImageView
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:src="@drawable/nought"
+            android:onClick="@{() -> controller.mark(2, 1)}"
+            android:src="@{controller.getPieceAt(2, 1)}"
             app:layout_constraintBottom_toTopOf="@+id/reset_button"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/column_divider_2"
@@ -147,7 +162,8 @@
         <ImageView
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:src="@drawable/cross"
+            android:onClick="@{() -> controller.mark(2, 2)}"
+            android:src="@{controller.getPieceAt(2, 2)}"
             app:layout_constraintBottom_toTopOf="@+id/reset_button"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toEndOf="parent"
@@ -160,6 +176,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
+            android:onClick="@{() -> controller.reset()}"
             android:text="@string/reset"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
