@@ -177,7 +177,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:onClick="@{() -> controller.reset()}"
-            android:text="@string/reset"
+            android:text="@{controller.gameOver ? @string/new_game : @string/reset}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
