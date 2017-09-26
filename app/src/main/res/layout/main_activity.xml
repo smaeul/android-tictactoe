@@ -3,10 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- A ConstraintLayout provides powerful methods for arranging Views relative to other views or
+    within empty space in their parent. It enforces a very shallow layout hierarchy. Note that any
+    class that follows a few rules can be referenced from an XML layout, but if it is not in the
+    one of a few predefined packages, it needs a fully-qualified name. -->
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <!-- These four views do not have any behavior. They only provide a background color for the
+        lines on the game board, and they serve as anchor points for the ImageViews. -->
         <View
             android:id="@+id/column_divider_1"
             android:layout_width="@dimen/grid_thickness"
@@ -47,6 +53,9 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/row_divider_1" />
 
+        <!-- The nine ImageViews are laid out relative to the dividers, not to each other. This is
+        the magic that makes the game board square and responsively-sized no matter if the images
+        are present, nor what size the images are. -->
         <ImageView
             android:layout_width="0dp"
             android:layout_height="0dp"
