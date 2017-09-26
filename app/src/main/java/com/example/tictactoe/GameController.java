@@ -1,6 +1,7 @@
 package com.example.tictactoe;
 
 import android.databinding.BaseObservable;
+import android.databinding.Bindable;
 
 /**
  * Controller class for the tic-tac-toe game.
@@ -9,6 +10,7 @@ import android.databinding.BaseObservable;
 public class GameController extends BaseObservable {
     private final GamePiece[][] board = new GamePiece[3][3];
     private GamePiece currentPiece;
+    private boolean isGameOver;
 
     public GameController() {
         reset();
@@ -18,11 +20,23 @@ public class GameController extends BaseObservable {
         return board[row][column];
     }
 
+    @Bindable
+    public boolean isGameOver() {
+        return isGameOver;
+    }
+
     public void mark(int row, int column) {
         if (getPieceAt(row, column) != GamePiece.EMPTY)
             return;
         setPieceAt(row, column, currentPiece);
         currentPiece = (currentPiece == GamePiece.CROSS) ? GamePiece.NOUGHT : GamePiece.CROSS;
+        if (winner() != GamePiece.EMPTY)
+            setGameOver(true);
+    }
+
+    private void setGameOver(boolean isGameOver) {
+        this.isGameOver = isGameOver;
+        notifyPropertyChanged(BR.gameOver);
     }
 
     private void setPieceAt(int row, int column, final GamePiece piece) {
@@ -37,5 +51,11 @@ public class GameController extends BaseObservable {
             for (int j = 0; j < board[i].length; ++j)
                 setPieceAt(i, j, GamePiece.EMPTY);
         currentPiece = GamePiece.CROSS;
+        setGameOver(false);
+    }
+
+    public GamePiece winner() {
+        // FIXME: check for win condition.
+        return GamePiece.EMPTY;
     }
 }
