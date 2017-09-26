@@ -25,8 +25,10 @@ public class GameController extends BaseObservable {
         currentPiece = (currentPiece == GamePiece.CROSS) ? GamePiece.NOUGHT : GamePiece.CROSS;
     }
 
-    public void setPieceAt(int row, int column, GamePiece piece) {
+    private void setPieceAt(int row, int column, final GamePiece piece) {
         board[row][column] = piece;
+        // This method does not follow the contract for @Bindable, so report a generic change, which
+        // will refresh everything dependent on this object.
         notifyChange();
     }
 
